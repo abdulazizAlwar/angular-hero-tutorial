@@ -29,6 +29,21 @@ export class CharactersComponent implements OnInit {
     this.messageService.add(`CharacterComponent: Got characters array`)
   }
 
+  add(name:string): void {
+    name=name.trim()
+    if (!name) {return;}
+
+    this.characterService.addCharacter({ name } as Character)
+      .subscribe( character => {
+        this.characters.push(character)
+      })
+  }
+
+  delete(character: Character): void {
+    this.characters = this.characters.filter(c => c !== character)
+    this.characterService.deleteCharacter(character.id).subscribe()
+  }
+
   // selectedCharacter?: Character
   // onSelect(character: Character) {
   //   this.selectedCharacter = character
