@@ -5,11 +5,11 @@ import { CharacterService } from '../character.service'
 import { MessageService } from '../message.service'
 
 @Component({
-  selector: 'app-characters',
-  templateUrl: './characters.component.html',
-  styleUrls: ['./characters.component.css']
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css']
 })
-export class CharactersComponent implements OnInit {
+export class DashboardComponent implements OnInit {
 
   characters: Character[] = []
 
@@ -24,15 +24,15 @@ export class CharactersComponent implements OnInit {
 
   getCharacters(): void {
     this.characterService.getCharacters().subscribe(
-      characters => this.characters = characters
+      characters => this.characters = characters.slice(1,5)
     )
-    this.messageService.add(`CharacterComponent: Got characters array`)
+    this.messageService.add(`CharacterComponent: Got top characters array`)
   }
 
-  // selectedCharacter?: Character
-  // onSelect(character: Character) {
-  //   this.selectedCharacter = character
-  //   this.messageService.add(`CharacterComponent: Selected character id=${character.id}`)
-  // }
+  selectedCharacter?: Character
+  onSelect(character: Character) {
+    this.selectedCharacter = character
+    this.messageService.add(`CharacterComponent: Selected character id=${character.id}`)
+  }
 
 }
