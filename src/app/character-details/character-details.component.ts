@@ -36,4 +36,13 @@ export class CharacterDetailsComponent implements OnInit {
     this.location.back()
   }
 
+  save(): void {
+    if (this.character) {
+      this.characterService.updateCharacter(this.character)
+        .subscribe(
+          () => this.goBack()
+        )
+    }
+  }
+
 }
