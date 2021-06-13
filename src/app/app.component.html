@@ -1,3 +1,22 @@
 <h1>{{ title }}</h1>
 
-<app-characters></app-characters>
+<nav>
+
+  <a routerLink="">
+    Home
+  </a>
+
+  <a routerLink="/dashboard">
+    Dashboard
+  </a>
+
+  <a routerLink="/characters">
+    Characters
+  </a>
+
+</nav>
+
+<router-outlet></router-outlet>
+<!-- <app-characters></app-characters> -->
+
+<app-messages></app-messages>
